@@ -9,12 +9,22 @@ class CategoryItem extends StatelessWidget {
   CategoryItem(this.id, this.title, this.color);
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryMealsPage(id, title);
-        },
-      ),
+//Using push system
+
+    // Navigator.of(ctx).push(
+    //   MaterialPageRoute(
+    //     builder: (_) {
+    //       return CategoryMealsPage(id, title);
+    //     },
+    //   ),
+    // );
+
+    Navigator.of(ctx).pushNamed(
+      '/categories-meals',
+      arguments: {
+        'id': id,
+        'title': title,
+      },
     );
   }
 
