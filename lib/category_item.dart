@@ -20,7 +20,7 @@ class CategoryItem extends StatelessWidget {
     // );
 
     Navigator.of(ctx).pushNamed(
-      '/categories-meals',
+      CategoryMealsPage.routeName,
       arguments: {
         'id': id,
         'title': title,
