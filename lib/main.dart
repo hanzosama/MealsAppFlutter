@@ -4,6 +4,7 @@ import './screens/tabs_page.dart';
 import './screens/category_meals_page.dart';
 import './screens/meail_detail_page.dart';
 import './screens/categories_page.dart';
+import 'screens/filter_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         CategoryMealsPage.routeName: (ctx) => CategoryMealsPage(),
         MealDetailPage.routeName: (ctx) => MealDetailPage(),
+        FilterPage.routeName: (ctx) => FilterPage(),
       },
       onGenerateRoute: (settings) {
         // To navigate and resolve routes not present
