@@ -6,6 +6,10 @@ import '../dummy_data.dart';
 class CategoryMealsPage extends StatefulWidget {
   static const routeName = '/categories-meals';
 
+  final List<Meal> _availableMeals;
+
+  CategoryMealsPage(this._availableMeals);
+
   @override
   State<CategoryMealsPage> createState() => _CategoryMealsPageState();
 }
@@ -14,12 +18,6 @@ class _CategoryMealsPageState extends State<CategoryMealsPage> {
   String categoryTitle;
   List<Meal> displayedMeals;
   var isLoadedData = false;
-
-  void _removeMeal(String mealId) {
-    setState(() {
-      displayedMeals.removeWhere((element) => element.id == mealId);
-    });
-  }
 
   @override
   void initState() {
@@ -33,7 +31,7 @@ class _CategoryMealsPageState extends State<CategoryMealsPage> {
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryId = routeArgs['id'];
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget._availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
       }).toList();
       isLoadedData = true;
@@ -57,7 +55,6 @@ class _CategoryMealsPageState extends State<CategoryMealsPage> {
             duration: displayedMeals[index].duration,
             complexity: displayedMeals[index].complexity,
             affordability: displayedMeals[index].affordability,
-            removeItem: _removeMeal,
           );
         },
         itemCount: displayedMeals.length,
